@@ -405,24 +405,28 @@ program
 	});
 
 program
-	.command('shuffle')
-	.alias('ts')
-	.description('Toggle shuffle on/off')
-	.action(() => {
-		spotifyClient.shuffle().then((status) => {
-			printer.printToggleShuffle(status);
-		});
-	});
+       .command('shuffle [status]')
+       .alias('ts')
+       .description(
+         'Toggle shuffle on/off. Optionally, you can pass <on> of <off> as arguments.'
+       )
+       .action(status => {
+         spotifyClient.shuffle(status).then(responseStatus => {
+           printer.printToggleShuffle(responseStatus);
+         });
+       });
 
 program
-	.command('repeat')
-	.alias('tr')
-	.description('Toggle repeat on/off')
-	.action(() => {
-		spotifyClient.repeat().then((status) => {
-			printer.printToggleRepeat(status);
-		});
-	});
+       .command('repeat [status]')
+       .alias('tr')
+       .description(
+         'Toggle repeat on/off. Optionally, you can pass <on> of <off> as arguments.'
+       )
+       .action(status => {
+         spotifyClient.repeat(status).then(responseStatus => {
+           printer.printToggleRepeat(responseStatus);
+         });
+       });
 
 program
 	.command('share [type]')

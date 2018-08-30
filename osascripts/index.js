@@ -131,14 +131,36 @@ function start(){
 	return execute('tell application "Spotify" to activate');
 }
 
-function shuffle(){
-	return execute('tell application "Spotify" to set shuffling to not shuffling').then(() => {
+function shuffle(status) {
+  if (status === 'on') {
+    return execute('tell application "Spotify" to shuffling');
+  }
+  if (status === 'off') {
+    return execute(
+      'tell application "Spotify" to set shuffling to not shuffling'
+    );
+  }
+
+  return execute(
+    'tell application "Spotify" to set shuffling to not shuffling'
+  ).then(() => {
 		return execute('tell application "Spotify" to shuffling');
 	});
 }
 
-function repeat(){
-	return execute('tell application "Spotify" to set repeating to not repeating').then(() => {
+function repeat(status) {
+  if (status === 'on') {
+    return execute('tell application "Spotify" to repeating');
+  }
+  if (status === 'off') {
+    return execute(
+      'tell application "Spotify" to set repeating to not repeating'
+    );
+  }
+
+  return execute(
+    'tell application "Spotify" to set repeating to not repeating'
+  ).then(() => {
 		return execute('tell application "Spotify" to repeating');
 	});
 }
